@@ -3,6 +3,7 @@ var mongoose = require('mongoose');
 var User = require('../models/user')
 require('dotenv').config();
 let env_ToDeploy = process.env.ENV;
+let MongoUrl = process.env.MongoCN;
 
 //Function Connect to Mongodb
 const mongoconnect = {
@@ -10,12 +11,12 @@ const mongoconnect = {
         //check what env dev want to devploy 
         switch (env_ToDeploy) {
             case 'DEVELOPMENT':
-                mongoose.connect("mongodb+srv://phamvqcuong99:Quoccuong_999@cluster0.7qnaw.mongodb.net/Learning_Hapi", { keepAlive: true, keepAliveInitialDelay: 300000 }).then(() => {
+                mongoose.connect(MongoUrl, { keepAlive: true, keepAliveInitialDelay: 300000 }).then(() => {
                     console.log('Database connected - Dev');
                 });
                 break;
             case 'PRODUCTION':
-                mongoose.connect("mongodb+srv://phamvqcuong99:Quoccuong_999@cluster0.7qnaw.mongodb.net/Learning_Hapi", { keepAlive: true, keepAliveInitialDelay: 300000 }).then(() => {
+                mongoose.connect(MongoUrl, { keepAlive: true, keepAliveInitialDelay: 300000 }).then(() => {
                     console.log('Database connected - Product');
                 });;
                 break;

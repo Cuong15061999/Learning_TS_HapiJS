@@ -7,7 +7,8 @@ const Inert = require('@hapi/inert');
 const Vision = require('@hapi/vision');
 const HapiSwagger = require('hapi-swagger');
 const Agenda = require("agenda");
-const agenda = new Agenda({ db: { address: "mongodb+srv://phamvqcuong99:Quoccuong_999@cluster0.7qnaw.mongodb.net/Learning_Hapi" } });
+const MongoUrl = process.env.MongoCN;
+const agenda = new Agenda({ db: { address: MongoUrl } });
 agenda.define("report", async (job) => {
     console.log("connection still fine")
 });

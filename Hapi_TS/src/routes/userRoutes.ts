@@ -16,6 +16,9 @@ export const userRoutes = (server: Server) => {
             description: 'Create new user',
             notes: 'Create new user',
             tags: ['api'],
+            validate: {
+                payload: userPayload
+            },
         },
         handler: createUser
     });

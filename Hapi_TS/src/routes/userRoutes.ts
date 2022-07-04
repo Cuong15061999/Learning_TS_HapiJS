@@ -1,5 +1,5 @@
 import { Server } from "@hapi/hapi";
-import Joi from "@hapi/joi";
+import Joi from "joi";
 import { createUser, getAllUser, getUser, updateUser, deleteUser } from "../services/userServices";
 
 const userPayload = Joi.object({

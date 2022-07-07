@@ -1,5 +1,6 @@
 import { Request, ResponseToolkit } from "@hapi/hapi";
 import { IEvent, Event } from "../models/eventModel";
+import { Voucher } from "../models/voucherModel";
 import mongoose from "mongoose";
 import { handleCatchError } from "./handlerCatchError";
 
@@ -58,7 +59,9 @@ export const deleteEvent = async (request: Request, h: ResponseToolkit) => {
     try {
         var delEvent = await Event.findByIdAndDelete(<mongoose.Types.ObjectId>request.params.id)
         if(delEvent){
-            return h.response({message: " Delete successfully", data: delEvent,}).code(200);
+            //also delete all voucher of this event
+            const delAllVoucher = await Voucher.deleteMany({idEvent: request.params.id})
+            return h.response({message: " Delete successfully", data: delEvent, delAllVoucher: delAllVoucher}).code(200);
         }
         return h.response({message: "Can not find event to delete"}).code(409);
     } catch (error) {

@@ -1,11 +1,10 @@
 import mongoose from "mongoose";
-import * as dotenv from "dotenv";
-dotenv.config();
+import { ENV, MongoURL } from '../secrets/secret'
 
 export const mongoConnect = {
     connectDB: function(){
-        var URL = <string> process.env.MongoURL;
-        switch(process.env.ENV){
+        var URL = <string> MongoURL;
+        switch(ENV){
             case 'DEVELOPMENT':
                 mongoose.connect(URL, { keepAlive: true, keepAliveInitialDelay: 300000 }).then(() => {
                     console.log('Database connected - Dev');

@@ -1,5 +1,6 @@
 import { Server } from "@hapi/hapi";
 import Joi from "joi";
+import { sendEmail } from "../services/nodeMailer";
 import { createVoucher, getAllVoucher, getVoucher, updateVoucher, deleteVoucher } from "../services/voucherService";
 
 const voucherPayload = Joi.object({
@@ -68,5 +69,16 @@ export const voucherRoutes = (server: Server) => {
             tags: ['api']
         },
         handler: deleteVoucher
+    });
+    //sending email
+    server.route({
+        method: "POST",
+        path: "/sendmail",
+        options: {
+            description: 'Delete voucher',
+            notes: 'This route delete voucher',
+            tags: ['api']
+        },
+        handler: sendEmail
     });
 }

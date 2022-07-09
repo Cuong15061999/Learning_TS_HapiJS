@@ -10,7 +10,7 @@ import * as dotenv from 'dotenv';
 dotenv.config();
 
 //set up agenda queue
-var URL = <string> process.env.MongoURL;
+var URL = <string>process.env.MongoURL;
 const agenda = new Agenda({ db: { address: URL } });
 agenda.define("report", async () => {
     console.log("connection still fine")
@@ -24,8 +24,8 @@ const init = async () => {
     });
     //set up open API Swagger
     const swaggerOptions: hapiswagger.RegisterOptions = {
-        info:{
-            title:'Test API Documentation'
+        info: {
+            title: 'Test API Documentation'
         }
     };
     const plugins: Array<Hapi.ServerRegisterPluginObject<any>> = [
@@ -49,12 +49,15 @@ const init = async () => {
     await agenda.start();
     await agenda.every("1 minute", "report");
 
+    //bull
+
+
     //Separate routes
     userRoutes(server)
 
     //start server
     await server.start();
     console.log('Server running on %s', server.info.uri);
-    
+
 }
 init();

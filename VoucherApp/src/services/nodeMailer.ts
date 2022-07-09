@@ -1,12 +1,8 @@
-import { Request, ResponseToolkit } from "@hapi/hapi";
 import { handleCatchError } from "./handlerCatchError";
 import { createTransport } from "nodemailer";
 import { EMAIL, PASSWORD } from "../secrets/secret";
+import { Voucher } from "../models/voucherModel";
 
-interface emailPayLoad {
-    message : string,
-    emailTo: string,
-}
 //create transport server from 
 export const transporter = createTransport({
     service: "Gmail",
@@ -16,9 +12,13 @@ export const transporter = createTransport({
     }
 });
 //Send Email function using nodemailer
-export const sendEmail = async (request: Request, h: ResponseToolkit) => {
+export const sendEmail = async (id_voucher: string, emailTo: string) => {
     try {
-        const body = <emailPayLoad> request.payload;
+        //take all voucher info mation
+        const voucherInfo = await Voucher.findOne({_id: id_voucher})
+        if (!voucherInfo){
+            return "Can't find voucher in database"
+        }
         // verify connection configuration
         transporter.verify(function (error, success) {
             if (error) {
@@ -30,20 +30,23 @@ export const sendEmail = async (request: Request, h: ResponseToolkit) => {
         //mail options
         const mailOptions = {
             from: EMAIL,
-            to: body.emailTo,
+            to: emailTo,
             subject: " Voucher To Event xxx ",
-            html: `<p>Here is your Voucher to our Event. With message: ${body.message} </p>`
+            html: `<p>Congratulations!!!.<br> You have receive a voucher event </p></n>
+                    <p> Here is your <b>Voucher Name:</b> ${voucherInfo.voucherName}</p></n>
+                    <p> Here is your <b>voucher Pass:</b> ${voucherInfo.voucherPass}</p></n>
+                    <p> And watch out <b>the expired day:</b> ${voucherInfo.expiredAt}</p></n>
+                    <p> Wish you will enjoy out event</p></n>
+                    <p> <b> Even Company Name </b> </p>`
         }
         //send email
-        transporter.sendMail(mailOptions, function (error, info) {
+        return transporter.sendMail(mailOptions, function (error, info) {
             if (error) {
                 console.log(error);
             } else {
                 console.log('Email sent: ' + info.response);
             }
         });
-        return h.response({ message: "Voucher sended to "+ body.emailTo +" successfully." });
-
     } catch (error) {
         return handleCatchError(error);
     }

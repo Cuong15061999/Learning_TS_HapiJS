@@ -16,6 +16,7 @@
     "@hapi/hapi": "^20.2.2",
     "@hapi/inert": "^6.0.5",
     "@hapi/vision": "^6.1.0",
+    "@types/bull": "^3.15.8",
     "@types/hapi": "^18.0.7",
     "@types/hapi__hapi": "^20.0.12",
     "@types/hapi__inert": "^5.2.3",
@@ -30,5 +31,8 @@
     "nodemailer": "^6.7.7",
     "ts-node-dev": "^2.0.0",
     "typescript": "^4.7.4"
+  },
+  "dependencies": {
+    "bull": "^4.8.4"
   }
 }

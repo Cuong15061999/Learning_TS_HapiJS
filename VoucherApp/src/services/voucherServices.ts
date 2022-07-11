@@ -4,7 +4,7 @@ import { Event } from "../models/eventModel";
 import { commitWithRetry } from "./transaction";
 import { startSession } from "mongoose";
 import mongoose from "mongoose";
-import { handleCatchError } from "./handlerCatchError";
+import { handleCatchError } from "./handleErrorServices/handlerCatchError";
 
 export const createVoucher = async (request: Request, h: ResponseToolkit) => {
     //start session to control transaction of in and out mongodb

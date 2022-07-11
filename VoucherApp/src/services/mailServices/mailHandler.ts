@@ -1,6 +1,6 @@
 import Queue from "bull";
 import { sendEmail } from "./nodeMailer";
-import { handleCatchError } from "./handlerCatchError";
+import { handleCatchError } from "../handleErrorServices/handlerCatchError";
 import { Request, ResponseToolkit } from "@hapi/hapi";
 
 interface emailPayLoad {

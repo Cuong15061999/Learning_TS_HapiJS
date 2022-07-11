@@ -1,8 +1,8 @@
 import { Server } from "@hapi/hapi";
 import Joi from "joi";
 import { Request, ResponseToolkit } from "@hapi/hapi";
-import { sendmailNotify } from "../services/mailHandler"
-import { createVoucher, getAllVoucher, getVoucher, updateVoucher, deleteVoucher } from "../services/voucherService";
+import { sendmailNotify } from "../services/mailServices/mailHandler"
+import { createVoucher, getAllVoucher, getVoucher, updateVoucher, deleteVoucher } from "../services/voucherServices";
 
 const voucherPayload = Joi.object({
     voucherName: Joi.string(),

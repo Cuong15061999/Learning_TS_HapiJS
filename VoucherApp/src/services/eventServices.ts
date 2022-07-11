@@ -2,7 +2,7 @@ import { Request, ResponseToolkit } from "@hapi/hapi";
 import { IEvent, Event } from "../models/eventModel";
 import { Voucher } from "../models/voucherModel";
 import mongoose from "mongoose";
-import { handleCatchError } from "./handlerCatchError";
+import { handleCatchError } from "./handleErrorServices/handlerCatchError";
 
 export const createEvent = async (request: Request, h: ResponseToolkit) => {
     try {

@@ -7,7 +7,11 @@ import vision from "@hapi/vision";
 import hapiswagger from "hapi-swagger";
 import { eventRoutes } from "./controllers/eventController"
 import { voucherRoutes } from "./controllers/voucherController"
+import { userRoutes } from "./controllers/userController";
+import { editableEventRoutes } from "./controllers/editableController";
 dotenv.config();
+import { loginRoutes } from "./controllers/loginController";
+
 
 const init = async () => {
     //set up server
@@ -36,11 +40,15 @@ const init = async () => {
             options: swaggerOptions
         }
     ]
-    await server.register(plugins)
+    await server.register(plugins);
 
     //separate routes
-    eventRoutes(server)
-    voucherRoutes(server)
+    eventRoutes(server);
+    voucherRoutes(server);
+    userRoutes(server);
+    editableEventRoutes(server);
+    loginRoutes(server);
+
     //start server 
     await server.start();
     console.log('Server running on %s', server.info.uri);

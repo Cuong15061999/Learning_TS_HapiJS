@@ -1,7 +1,7 @@
-import { handleCatchError } from "./handlerCatchError";
+import { handleCatchError } from "../handleErrorServices/handlerCatchError";
 import { createTransport } from "nodemailer";
-import { EMAIL, PASSWORD } from "../secrets/secret";
-import { Voucher } from "../models/voucherModel";
+import { EMAIL, PASSWORD } from "../../secrets/secret";
+import { Voucher } from "../../models/voucherModel";
 
 //create transport server from 
 export const transporter = createTransport({

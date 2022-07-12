@@ -20,7 +20,7 @@ export const loginRoutes = (server: Server) => {
             }
         },
         handler: (req: Request, h: ResponseToolkit) => {
-            return h.response("this route handler the login, and create jwt token")
+            return h.response("this route handler the login, and create jwt token, AUTH GG...")
         }
     });
 }

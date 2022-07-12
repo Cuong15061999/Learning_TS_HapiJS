@@ -1,7 +1,7 @@
 import { Request, ResponseToolkit } from "@hapi/hapi";
 import { IVoucher, Voucher } from "../models/voucherModel";
 import { Event } from "../models/eventModel";
-import { commitWithRetry } from "./transaction";
+import { commitWithRetry } from "./mongoTransaction/transaction";
 import { startSession } from "mongoose";
 import mongoose from "mongoose";
 import { handleCatchError } from "./handleErrorServices/handlerCatchError";

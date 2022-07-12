@@ -29,4 +29,4 @@ const editableSchema : Schema = new Schema({
     }
 });
 
-export const editableEvent = model<IEditableModel>("Event", editableSchema);
+export const editableEvent = model<IEditableModel>("EditableEvent", editableSchema);

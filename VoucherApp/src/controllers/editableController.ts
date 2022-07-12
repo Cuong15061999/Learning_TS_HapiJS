@@ -3,8 +3,7 @@ import Joi from "joi";
 import { editableMe, editableRelease, editableMaintain } from "../services/editableServices";
 
 const editablePayload = Joi.object({
-    eventName: Joi.string(),
-    maxQuantityVoucher: Joi.number()
+    id_User: Joi.string().required(),
 })
 
 export const editableEventRoutes = (server: Server) => {
@@ -22,7 +21,7 @@ export const editableEventRoutes = (server: Server) => {
         },
         handler: editableMe
     });
-    //get all events
+    //
     server.route({
         method: "POST",
         path: "/events/{event_id}/editable/release",
@@ -33,9 +32,9 @@ export const editableEventRoutes = (server: Server) => {
         },
         handler: editableRelease
     });
-    //get a event
+    //
     server.route({
-        method: "GET",
+        method: "POST",
         path: "/events/{event_id}/editable/maintain",
         options: {
             description: 'Reset time expired in the event',

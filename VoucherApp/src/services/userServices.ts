@@ -2,7 +2,6 @@ import { User, IUser } from "../models/userModel";
 import { Request, ResponseToolkit } from "@hapi/hapi";
 import { handleCatchError } from "./handleErrorServices/handlerCatchError";
 import mongoose from "mongoose";
-import { truncate } from "fs/promises";
 
 export const createUser = async (Request: Request, h: ResponseToolkit) => {
     try {
@@ -20,7 +19,7 @@ export const createUser = async (Request: Request, h: ResponseToolkit) => {
 export const getAllUser = async (Request: Request, h: ResponseToolkit) => {
     try {
         var allUsers = await User.find();
-        return h.response(allUsers);
+        return h.response(allUsers).code(200);
     } catch (error) {
         return handleCatchError(error);
     }

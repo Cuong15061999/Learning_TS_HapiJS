@@ -18,6 +18,8 @@ describe('GET /', () => {
     {
         const res = await server.inject({
             method: 'GET',
+            //use url '/' is okk, but other url error time out
+            //to run: npm run test3
             url: '/users'
         });
         expect(res.statusCode).to.equal(200);

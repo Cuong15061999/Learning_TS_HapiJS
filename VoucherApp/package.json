@@ -9,8 +9,8 @@
     "dev": "ts-node-dev src/index.ts",
     "dev2": "ts-node-dev src/main.ts",
     "dev3": "ts-node-dev src/testmock.ts",
-    "test2": "lab -v test/example.test.js",
-    "test3": "lab -v -T  node_modules/lab-transform-typescript test/example.test.js"
+    "test2": "mocha  test/testmock.js",
+    "test3": "lab -T  node_modules/lab-transform-typescript test/example.test.js"
   },
   "keywords": [],
   "author": "",
@@ -19,7 +19,7 @@
     "@hapi/code": "^9.0.1",
     "@hapi/hapi": "^20.2.2",
     "@hapi/inert": "^6.0.5",
-    "@hapi/lab": "^25.0.1",
+    "@hapi/lab": "^18.1.2",
     "@hapi/vision": "^6.1.0",
     "@types/bull": "^3.15.8",
     "@types/hapi": "^18.0.7",
@@ -35,6 +35,8 @@
     "hapi-swagger": "^14.5.5",
     "jsonwebtoken": "^8.5.1",
     "lab": "^18.0.2",
+    "lab-transform-typescript": "^3.0.1",
+    "mocha": "^10.0.0",
     "mock-mongoose": "^8.0.1-a",
     "moment": "^2.29.3",
     "mongoose": "^6.4.3",

@@ -49,6 +49,8 @@ export const start = async () => {
 }
 //start();
 export const init = async () => {
+    //connect to mongodb
+    mongoConnect.connectDB();
     await server.initialize();
     return server;
 };

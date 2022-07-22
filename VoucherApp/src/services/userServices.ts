@@ -11,7 +11,7 @@ export const createUser = async (Request: Request, h: ResponseToolkit) => {
             return h.response({ message: "email already be taken"});
         }
         var saveUser = await new User(body).save();
-        return h.response(saveUser);
+        return h.response(saveUser).code(200);
     } catch (error) {
         return handleCatchError(error);
     }
@@ -26,11 +26,11 @@ export const getAllUser = async (Request: Request, h: ResponseToolkit) => {
 }
 export const getUser = async (Request: Request, h: ResponseToolkit) => {
     try {
-        var userByID = await User.findOne({ id : Request.params.id})
+        var userByID = await User.findOne({ _id : Request.params.id})
         if(!userByID){
-            return h.response({ message: "Can't find User"});
+            return h.response({ message: "Can not find User"}).code(409);
         }
-        return h.response(userByID);
+        return h.response(userByID).code(200);
     } catch (error) {
         return handleCatchError(error);
     }
@@ -42,7 +42,7 @@ export const updateUser = async (Request: Request, h: ResponseToolkit) => {
         if(!updateUser){
             return h.response({ message: "User not found to update"});
         }
-        return h.response(updateUser);
+        return h.response(updateUser).code(200);
     } catch (error) {
         return handleCatchError(error);
     }

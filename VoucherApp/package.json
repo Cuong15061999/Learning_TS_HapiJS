@@ -10,7 +10,7 @@
     "dev2": "ts-node-dev src/main.ts",
     "dev3": "ts-node-dev src/testmock.ts",
     "test2": "mocha  test/testmock.js",
-    "test3": "lab -T  node_modules/lab-transform-typescript test/example.test.js"
+    "test3": "lab -v -T  node_modules/lab-transform-typescript test/example.test.js"
   },
   "keywords": [],
   "author": "",
@@ -30,6 +30,7 @@
     "@types/jsonwebtoken": "^8.5.8",
     "@types/node": "^18.0.3",
     "@types/nodemailer": "^6.4.4",
+    "chai": "^4.3.6",
     "code": "^5.2.4",
     "dotenv": "^16.0.1",
     "hapi-swagger": "^14.5.5",

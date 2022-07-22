@@ -48,10 +48,7 @@ export const userRoutes = (server: Server) => {
         options: {
             description: 'Update Specifuc User',
             notes: 'Update Specific User',
-            tags: ['api'],
-            validate: {
-                payload: userPayload
-            },
+            tags: ['api']
         },
         handler: updateUser
     });
